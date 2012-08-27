@@ -33,7 +33,9 @@ class ScroogeWrapper(mavenProject: MavenProject,
   thriftDirectory: File,
   outputDirectory: File,
   language: String,
-  ostrich: Boolean) {
+  ostrich: Boolean,
+  finagleClient: Boolean,
+  finagleService: Boolean) {
   def generate() {
     val generator = language match {
       case "java" => new JavaGenerator
@@ -41,8 +43,11 @@ class ScroogeWrapper(mavenProject: MavenProject,
     }
     val importer = Importer.fileImporter(thriftDirectory.getAbsolutePath() :: Nil)
     val parser = new ScroogeParser(importer)
-    val serviceFlags: Set[ServiceOption] = Set(WithFinagleClient, WithFinagleService) ++
-      (if (ostrich) Set(WithOstrichServer) else Set())
+    val serviceFlags: Set[ServiceOption] = Set((WithOstrichServer -> ostrich),
+      (WithFinagleClient -> finagleClient),
+      (WithFinagleService -> finagleService)).map {
+        case (f, b) if b => f
+      }
 
     for (inputFile <- thriftDirectory.listFiles()) {
       generator(TypeResolver().resolve(

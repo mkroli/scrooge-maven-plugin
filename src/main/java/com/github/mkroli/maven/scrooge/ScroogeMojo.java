@@ -72,9 +72,24 @@ public class ScroogeMojo extends AbstractMojo {
 	 */
 	private boolean withOstrichServer;
 
+	/**
+	 * Whether an Finagle client should be created.
+	 * 
+	 * @parameter expression="${scrooge.finagle.client}" default-value="true"
+	 */
+	private boolean withFinagleClient;
+
+	/**
+	 * Whether an Finagle service should be created.
+	 * 
+	 * @parameter expression="${scrooge.finagle.service}" default-value="true"
+	 */
+	private boolean withFinagleService;
+
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		ScroogeWrapper scrooge = new ScroogeWrapper(project, thriftDirectory,
-				outputDirectory, language, withOstrichServer);
+				outputDirectory, language, withOstrichServer,
+				withFinagleClient, withFinagleService);
 		scrooge.generate();
 	}
 }
