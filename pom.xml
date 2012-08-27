@@ -7,6 +7,30 @@
 	<version>0.1-SNAPSHOT</version>
 	<packaging>maven-plugin</packaging>
 
+	<name>scrooge-maven-plugin</name>
+	<description>A Maven Plugin around scrooge.</description>
+	<url>https://github.com/mkroli/scrooge-maven-plugin</url>
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+	<organization>
+		<name>Michael Krolikowski</name>
+		<url>http://mkroli.github.com</url>
+	</organization>
+	<scm>
+		<connection>scm:git:git://github.com/mkroli/scrooge-maven-plugin.git</connection>
+		<developerConnection>scm:git:https://github.com/mkroli/scrooge-maven-plugin.git</developerConnection>
+		<url>https://github.com/mkroli/scrooge-maven-plugin</url>
+	</scm>
+	<inceptionYear>2012</inceptionYear>
+	<issueManagement>
+		<system>GitHub</system>
+		<url>https://github.com/mkroli/scrooge-maven-plugin/issues</url>
+	</issueManagement>
+
 	<properties>
 		<maven.compiler.source>1.5</maven.compiler.source>
 		<maven.compiler.target>1.5</maven.compiler.target>
