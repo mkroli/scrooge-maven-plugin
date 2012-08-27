@@ -45,8 +45,9 @@ class ScroogeWrapper(mavenProject: MavenProject,
     val parser = new ScroogeParser(importer)
     val serviceFlags: Set[ServiceOption] = Set((WithOstrichServer -> ostrich),
       (WithFinagleClient -> finagleClient),
-      (WithFinagleService -> finagleService)).map {
-        case (f, b) if b => f
+      (WithFinagleService -> finagleService)).flatMap {
+        case (f, b) if b => Some(f)
+        case _ => None
       }
 
     for (inputFile <- thriftDirectory.listFiles()) {
