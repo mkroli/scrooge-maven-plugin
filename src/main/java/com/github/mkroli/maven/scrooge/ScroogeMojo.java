@@ -32,7 +32,7 @@ public class ScroogeMojo extends AbstractMojo {
 	/**
 	 * The default maven project object.
 	 * 
-	 * @parameter expression="${project}"
+	 * @parameter property="project"
 	 * @required
 	 * @readonly
 	 */
@@ -41,7 +41,7 @@ public class ScroogeMojo extends AbstractMojo {
 	/**
 	 * Directory containing the thrift-idl files.
 	 * 
-	 * @parameter expression="${scrooge.thrift.directory}"
+	 * @parameter property="scrooge.thrift.directory"
 	 *            default-value="${project.basedir}/src/main/thrift"
 	 * @required
 	 */
@@ -59,7 +59,7 @@ public class ScroogeMojo extends AbstractMojo {
 	/**
 	 * The language of the generated source files (either "java" or "scala")
 	 * 
-	 * @parameter expression="${scrooge.language}" default-value="java"
+	 * @parameter property="scrooge.language" default-value="java"
 	 * @required
 	 */
 	private String language;
@@ -67,7 +67,7 @@ public class ScroogeMojo extends AbstractMojo {
 	/**
 	 * Whether an Ostrich server should be created.
 	 * 
-	 * @parameter expression="${scrooge.ostrich}" default-value="false"
+	 * @parameter property="scrooge.ostrich" default-value="false"
 	 * @required
 	 */
 	private boolean withOstrichServer;
@@ -75,14 +75,14 @@ public class ScroogeMojo extends AbstractMojo {
 	/**
 	 * Whether an Finagle client should be created.
 	 * 
-	 * @parameter expression="${scrooge.finagle.client}" default-value="true"
+	 * @parameter property="scrooge.finagle.client" default-value="true"
 	 */
 	private boolean withFinagleClient;
 
 	/**
 	 * Whether an Finagle service should be created.
 	 * 
-	 * @parameter expression="${scrooge.finagle.service}" default-value="true"
+	 * @parameter property="scrooge.finagle.service" default-value="true"
 	 */
 	private boolean withFinagleService;
 

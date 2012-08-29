@@ -1,0 +1,11 @@
+ ---
+ Scrooge Maven Plugin
+ ---
+ Michael Krolikowski
+ ---
+
+Scrooge Maven Plugin
+
+  This is a Maven Plugin around {{{https://github.com/twitter/scrooge}Scrooge}}.
+  It will take thrift idl-files and compile them using Scrooge to either
+  Java or Scala source files.
