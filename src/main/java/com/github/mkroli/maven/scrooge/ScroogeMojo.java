@@ -32,20 +32,35 @@ public class ScroogeMojo extends AbstractMojo {
 	/**
 	 * The default maven project object.
 	 * 
-	 * @parameter property="project"
+	 * @parameter expression="${project}"
 	 * @required
 	 * @readonly
 	 */
 	private MavenProject project;
 
+	public MavenProject getProject() {
+		return project;
+	}
+
+	public void setProject(MavenProject project) {
+		this.project = project;
+	}
+
 	/**
 	 * Directory containing the thrift-idl files.
 	 * 
-	 * @parameter property="scrooge.thrift.directory"
-	 *            default-value="${project.basedir}/src/main/thrift"
+	 * @parameter default-value="${project.basedir}/src/main/thrift"
 	 * @required
 	 */
 	private File thriftDirectory;
+
+	public File getThriftDirectory() {
+		return thriftDirectory;
+	}
+
+	public void setThriftDirectory(File thriftDirectory) {
+		this.thriftDirectory = thriftDirectory;
+	}
 
 	/**
 	 * Directory where the generated source files are created.
@@ -56,35 +71,75 @@ public class ScroogeMojo extends AbstractMojo {
 	 */
 	private File outputDirectory;
 
+	public File getOutputDirectory() {
+		return outputDirectory;
+	}
+
+	public void setOutputDirectory(File outputDirectory) {
+		this.outputDirectory = outputDirectory;
+	}
+
 	/**
 	 * The language of the generated source files (either "java" or "scala")
 	 * 
-	 * @parameter property="scrooge.language" default-value="java"
+	 * @parameter expression="${scrooge.language}" default-value="java"
 	 * @required
 	 */
 	private String language;
 
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
 	/**
 	 * Whether an Ostrich server should be created.
 	 * 
-	 * @parameter property="scrooge.ostrich" default-value="false"
+	 * @parameter default-value="false"
 	 * @required
 	 */
 	private boolean withOstrichServer;
 
+	public boolean isWithOstrichServer() {
+		return withOstrichServer;
+	}
+
+	public void setWithOstrichServer(boolean withOstrichServer) {
+		this.withOstrichServer = withOstrichServer;
+	}
+
 	/**
 	 * Whether an Finagle client should be created.
 	 * 
-	 * @parameter property="scrooge.finagle.client" default-value="true"
+	 * @parameter default-value="true"
 	 */
 	private boolean withFinagleClient;
+
+	public boolean isWithFinagleClient() {
+		return withFinagleClient;
+	}
+
+	public void setWithFinagleClient(boolean withFinagleClient) {
+		this.withFinagleClient = withFinagleClient;
+	}
 
 	/**
 	 * Whether an Finagle service should be created.
 	 * 
-	 * @parameter property="scrooge.finagle.service" default-value="true"
+	 * @parameter default-value="true"
 	 */
 	private boolean withFinagleService;
+
+	public boolean isWithFinagleService() {
+		return withFinagleService;
+	}
+
+	public void setWithFinagleService(boolean withFinagleService) {
+		this.withFinagleService = withFinagleService;
+	}
 
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		ScroogeWrapper scrooge = new ScroogeWrapper(project, thriftDirectory,
