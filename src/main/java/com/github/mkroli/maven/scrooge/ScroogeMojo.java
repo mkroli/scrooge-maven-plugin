@@ -115,6 +115,7 @@ public class ScroogeMojo extends AbstractMojo {
 	 * Whether an Finagle client should be created.
 	 * 
 	 * @parameter default-value="true"
+	 * @required
 	 */
 	private boolean withFinagleClient;
 
@@ -130,6 +131,7 @@ public class ScroogeMojo extends AbstractMojo {
 	 * Whether an Finagle service should be created.
 	 * 
 	 * @parameter default-value="true"
+	 * @required
 	 */
 	private boolean withFinagleService;
 
