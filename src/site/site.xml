@@ -17,7 +17,7 @@
 			</item>
 			<item name="Project Reports" href="project-reports.html">
 				<item name="ScalaDocs" href="scaladocs/index.html" />
-				<item name="Cobertura Test Coverage" href="cobertura/index.html" />
+				<item name="Plugin Documentation" href="plugin-info.xml" />
 			</item>
 		</menu>
 	</body>
