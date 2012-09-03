@@ -17,7 +17,7 @@
 			</item>
 			<item name="Project Reports" href="project-reports.html">
 				<item name="ScalaDocs" href="scaladocs/index.html" />
-				<item name="Plugin Documentation" href="plugin-info.xml" />
+				<item name="Plugin Documentation" href="plugin-info.html" />
 			</item>
 		</menu>
 	</body>
