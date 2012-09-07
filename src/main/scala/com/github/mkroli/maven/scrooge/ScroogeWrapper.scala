@@ -17,8 +17,6 @@ package com.github.mkroli.maven.scrooge
 
 import java.io.File
 
-import org.apache.maven.project.MavenProject
-
 import com.twitter.scrooge.Importer
 import com.twitter.scrooge.ScroogeParser
 import com.twitter.scrooge.ServiceOption
@@ -29,7 +27,11 @@ import com.twitter.scrooge.WithOstrichServer
 import com.twitter.scrooge.javagen.JavaGenerator
 import com.twitter.scrooge.scalagen.ScalaGenerator
 
-class ScroogeWrapper(mavenProject: MavenProject,
+trait Logger {
+  def info(msg: String): Unit
+}
+
+class ScroogeWrapper(logger: Logger,
   thriftDirectory: File,
   outputDirectory: File,
   language: String,
@@ -51,12 +53,12 @@ class ScroogeWrapper(mavenProject: MavenProject,
       }
 
     for (inputFile <- thriftDirectory.listFiles()) {
+      logger.info("Parsing %s".format(inputFile.getAbsolutePath()))
       generator(TypeResolver().resolve(
         parser.parseFile(
           inputFile.getAbsolutePath())).document,
         serviceFlags,
         outputDirectory)
     }
-    mavenProject.addCompileSourceRoot(outputDirectory.getAbsolutePath())
   }
 }

@@ -98,6 +98,12 @@
 			<groupId>com.twitter</groupId>
 			<artifactId>scrooge</artifactId>
 			<version>3.0.1</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.github.scopt</groupId>
+					<artifactId>scopt_2.9.1</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 	</dependencies>
 

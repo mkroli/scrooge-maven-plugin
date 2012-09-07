@@ -144,9 +144,19 @@ public class ScroogeMojo extends AbstractMojo {
 	}
 
 	public void execute() throws MojoExecutionException, MojoFailureException {
-		ScroogeWrapper scrooge = new ScroogeWrapper(project, thriftDirectory,
+		Logger logger = new Logger() {
+			public void info(String msg) {
+				getLog().info(msg);
+			}
+		};
+		ScroogeWrapper scrooge = new ScroogeWrapper(logger, thriftDirectory,
 				outputDirectory, language, withOstrichServer,
 				withFinagleClient, withFinagleService);
-		scrooge.generate();
+		try {
+			scrooge.generate();
+		} catch (Throwable t) {
+			throw new MojoExecutionException(t.getMessage(), t);
+		}
+		project.addCompileSourceRoot(outputDirectory.getAbsolutePath());
 	}
 }
