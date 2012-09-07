@@ -3,7 +3,7 @@
 
 	<groupId>com.github.mkroli</groupId>
 	<artifactId>scrooge-maven-plugin</artifactId>
-	<version>0.1</version>
+	<version>0.2-SNAPSHOT</version>
 	<packaging>maven-plugin</packaging>
 
 	<name>scrooge-maven-plugin</name>
